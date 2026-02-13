@@ -10,18 +10,13 @@ HeartScript is a Valentine-themed open source project built using **Next.js** th
 
 This project is launched as a **24-hour Valentine Special event** under the Open Source Quest.
 
-* 
-**Duration:** 24 Hours.
+* **Duration:** 24 Hours.
 
 
-* 
-**Scoring:** 2X Contribution Scoring on this repository.
+* **Scoring:** 2X Contribution Scoring on this repository.
 
 
-* 
-**Rewards:** The top contributor will be rewarded with an **exclusive title** on the website.
-
-
+* **Rewards:** The top contributor will be rewarded with an **exclusive title** on the website.
 
 ---
 
@@ -33,20 +28,16 @@ HeartScript is divided into two main components, allowing contributors to showca
 
 A customizable feature where users can create beautifully themed digital cards.
 
-* 
-**Customization:** Users can enter a name and write a personal message.
+* **Customization:** Users can enter a name and write a personal message.
 
 
-* 
-**Design:** Select from multiple design themes.
+* **Design:** Select from multiple design themes.
 
 
-* 
-**Interaction:** Preview the card in real-time.
+* **Interaction:** Preview the card in real-time.
 
 
-* 
-**Export:** Download the final creation as a high-quality PDF.
+* **Export:** Download the final creation as a high-quality PDF.
 
 
 
@@ -54,25 +45,19 @@ A customizable feature where users can create beautifully themed digital cards.
 
 A technical section where contributors can implement fun and logical romantic programs.
 
-* 
-**Examples:** Compatibility checkers, love score calculators, date optimizers, and other romantic-themed algorithms.
+* **Examples:** Compatibility checkers, love score calculators, date optimizers, and other romantic-themed algorithms.
 
 
-* 
-**Requirements:** Each algorithm must be accompanied by explanations and a **time complexity analysis**.
-
-
+* **Requirements:** Each algorithm must be accompanied by explanations and a **time complexity analysis**.
 
 ---
 
 ## 🛠️ Tech Stack
 
-* 
-**Framework:** Next.js.
+* **Framework:** Next.js.
 
 
-* 
-**Focus:** UI Design & Algorithmic Logic.
+* **Focus:** UI Design & Algorithmic Logic.
 
 
 

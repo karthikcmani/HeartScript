@@ -7,8 +7,14 @@ export default function LoveCalculator() {
   const [name2, setName2] = useState("");
   const [result, setResult] = useState(null);
 
+  const sanitize = (value) =>
+    value.trim().toLowerCase().replace(/[^a-z]/g, "");
+
   const calculateLove = () => {
-    const percentage = loveScore(name1, name2);
+    const clean1 = sanitize(name1);
+    const clean2 = sanitize(name2);
+
+    const percentage = loveScore(clean1, clean2);
     setResult(percentage);
   };
 

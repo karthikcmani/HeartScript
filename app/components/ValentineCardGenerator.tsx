@@ -132,6 +132,29 @@ export default function ValentineCardGenerator() {
           message={message}
         />
 
+          <textarea
+            value={message}
+            onChange={(e) => {
+              if (e.target.value.length <= 500) {
+                setMessage(e.target.value);
+              }
+            }}
+            onBlur={validate}
+            placeholder="Write your heartfelt message here..."
+            className="w-full border rounded p-2"
+          />
+
+          {errors.message && (
+            <p className="text-red-500 text-sm mt-1">
+              {errors.message}
+            </p>
+          )}
+
+          {/* Character Counter */}
+          <div className="text-sm text-gray-500 mt-1 text-right">
+            {message.length} / 500 characters
+          </div>
+        </div>
 
       </div>
 

@@ -3,6 +3,17 @@
 import { useState, useRef } from "react";
 import CardPreview from "./CardPreview";
 import { Download, FileText, Mail, Heart, ArrowLeft, Send } from "lucide-react";
+//new code 
+const loveQuotes: string[] = [
+  "You are my today and all of my tomorrows ❤️",
+  "Every love story is beautiful, but ours is my favorite 💕",
+  "You make my heart smile 😊",
+  "With you, every moment is magical ✨",
+  "I fall for you more and more every day 💖",
+  "You are the best thing that ever happened to me 💘"
+];
+//
+
 
 export default function ValentineCardGenerator() {
   const [step, setStep] = useState(1);
@@ -22,6 +33,13 @@ export default function ValentineCardGenerator() {
     setFont("serif");
   };
 
+  //new code
+ const generateRandomQuote = () => {
+    const randomIndex = Math.floor(Math.random() * loveQuotes.length);
+    setMessage(loveQuotes[randomIndex]);
+  };
+
+//
   const createDownloadCard = () => {
     const themeGradients: Record<string,string> = {
       romantic:"linear-gradient(135deg,#ec4899,#f43f5e,#800020)",
@@ -158,6 +176,19 @@ export default function ValentineCardGenerator() {
               rows={5}
               className="px-4 py-4 border-2 rounded-lg resize-none"
             />
+
+            {/* new code */}
+            <button
+  type="button"
+  onClick={() => {
+    const randomIndex = Math.floor(Math.random() * loveQuotes.length);
+    setMessage(loveQuotes[randomIndex]);
+  }}
+  className="px-4 py-2 bg-[#800020] text-white rounded-lg hover:bg-[#630019] transition text-sm font-semibold"
+>
+  💌 Generate Random Love Quote
+</button>
+            
 
             <select value={theme} onChange={e=>setTheme(e.target.value)} className="px-4 py-3 border-2 rounded-lg">
               <option value="romantic">Romantic</option>

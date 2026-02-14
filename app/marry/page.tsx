@@ -90,11 +90,46 @@ export default function DestinedMarryPage() {
               {result}
             </p>
 
-            -
+            {/* Heart popping effect */}
+            <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
+              {[...Array(5)].map((_, i) => (
+                <span
+                  key={i}
+                  className={`absolute text-pink-400 text-2xl animate-heartPop delay-${i * 200}`}
+                  style={{
+                    left: `${20 + i * 15}%`,
+                  }}
+                >
+                  ❤️
+                </span>
+              ))}
+            </div>
           </div>
         )}
       </div>
 
+      {/*animations */} 
+      <style jsx>{`
+        @keyframes popHeart {
+          0% { transform: scale(0); opacity: 0; }
+          50% { transform: scale(1.5); opacity: 1; }
+          100% { transform: scale(1) translateY(-40px); opacity: 0; }
+        }
+
+        .animate-heartPop {
+          animation: popHeart 1s ease forwards;
+        }
+
+        .animate-popHeart {
+          animation: popHeart 1s ease;
+        }
+
+        .delay-0 { animation-delay: 0s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-600 { animation-delay: 0.6s; }
+        .delay-800 { animation-delay: 0.8s; }
+      `}</style>
       
     </div>
   );

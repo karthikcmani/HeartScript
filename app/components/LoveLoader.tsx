@@ -11,10 +11,23 @@ const quotes = [
 
 export default function LoveLoader() {
   const [quote, setQuote] = useState("");
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * quotes.length);
     setQuote(quotes[randomIndex]);
+
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          return 100;
+        }
+        return prev + 2;
+      });
+    }, 50);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -26,6 +39,15 @@ export default function LoveLoader() {
       <p className="mt-6 text-xl font-semibold text-gray-700 animate-pulse">
         Calculating your love destiny...
       </p>
+
+      <div className="w-64 bg-white rounded-full h-4 mt-6 overflow-hidden shadow">
+        <div
+          className="bg-red-500 h-4 transition-all duration-100"
+          style={{ width: `${progress}%` }}
+        ></div>
+      </div>
+
+      <p className="mt-2 text-sm text-gray-600">{progress}%</p>
 
       <p className="mt-6 text-md italic text-gray-600 max-w-md">
         "{quote}"

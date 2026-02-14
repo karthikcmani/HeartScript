@@ -18,6 +18,10 @@ export default function ValentineCardGenerator() {
     setAlignment("center");
   };
 
+  const handleClearMessage = () => {
+    setMessage("");
+  };
+
   const handleDownloadImage = async () => {
     try {
       const html2canvas = (await import("html2canvas")).default;
@@ -167,9 +171,7 @@ export default function ValentineCardGenerator() {
       link.href = imageData;
       link.click();
 
-      alert(
-        "Email client opened! The card image has been downloaded. Please attach it manually."
-      );
+      alert("Email client opened! The card image has been downloaded.");
     } catch (error) {
       console.error("Email failed:", error);
       alert("Failed to prepare email.");
@@ -193,7 +195,6 @@ export default function ValentineCardGenerator() {
         </div>
       </div>
 
-      {/* STEP 1 */}
       {step === 1 && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full items-start">
 
@@ -209,12 +210,18 @@ export default function ValentineCardGenerator() {
             </div>
 
             {/* Recipient */}
-            <input
-              value={recipient}
-              onChange={(e)=>setRecipient(e.target.value)}
-              placeholder="Recipient Name"
-              className="px-4 py-4 w-full rounded-lg border-2 border-gray-300 focus:border-[#800020] outline-none"
-            />
+            <div>
+              <input
+                autoFocus
+                value={recipient}
+                onChange={(e)=>setRecipient(e.target.value)}
+                placeholder="Recipient Name"
+                className="px-4 py-4 w-full rounded-lg border-2 border-gray-300 focus:border-[#800020] outline-none"
+              />
+              <p className="text-sm text-gray-500 mt-1">
+                Enter the name of the person receiving the card.
+              </p>
+            </div>
 
             {/* Message */}
             <div>
@@ -226,6 +233,20 @@ export default function ValentineCardGenerator() {
                 rows={5}
                 className="px-4 py-4 w-full rounded-lg border-2 border-gray-300 focus:border-[#800020] outline-none resize-none"
               />
+
+              <p className="text-sm text-gray-500 mt-1">
+                Write a heartfelt message (max 500 characters).
+              </p>
+
+              {message && (
+                <button
+                  onClick={handleClearMessage}
+                  className="mt-2 text-sm text-[#800020] hover:text-[#630019] font-semibold"
+                >
+                  ❤️ Clear Message
+                </button>
+              )}
+
               <div className="text-right text-xs text-gray-400 mt-1">
                 {message.length} / 500 characters
               </div>
@@ -242,7 +263,7 @@ export default function ValentineCardGenerator() {
               <option value="pastel">Pastel Dream</option>
             </select>
 
-            {/* Alignment Selector */}
+            {/* Alignment */}
             <div>
               <span className="text-sm font-medium text-gray-700 mb-2 block">
                 Text Alignment

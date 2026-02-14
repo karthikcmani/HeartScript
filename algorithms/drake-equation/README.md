@@ -64,8 +64,6 @@ const result = calculatePotentialPartners({
 
 console.log(result.finalNumber); // ~26 potential matches
 console.log(result.steps);       // Detailed breakdown
-
-
 Mathematical Notes: 
 
 Geometric Mean for Personality: Using geometric mean (not arithmetic) prevents "requirement inflation" when selecting multiple traits.

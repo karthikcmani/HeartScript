@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import CardPreview from "./CardPreview";
 import {
   Download,
@@ -41,7 +41,7 @@ export default function ValentineCardGenerator() {
 
   const [showCopied, setShowCopied] = useState(false);
 
-  /* ---------------- VALIDATION ---------------- */
+  /* ---------------- UTIL ---------------- */
   const validateStepOne = () => {
     if (!recipient.trim()) {
       setError("Please enter the recipient’s name");
@@ -63,13 +63,6 @@ export default function ValentineCardGenerator() {
     return true;
   };
 
-  /* ---------------- UTIL ---------------- */
-  const generateRandomQuote = () => {
-    const randomIndex = Math.floor(Math.random() * loveQuotes.length);
-    setMessage(loveQuotes[randomIndex]);
-    setError(null);
-  };
-
   const handleReset = () => {
     setRecipient("");
     setMessage("");
@@ -77,6 +70,12 @@ export default function ValentineCardGenerator() {
     setAlignment("center");
     setFont("serif");
     setStickers([]);
+    setError(null);
+  };
+
+  const generateRandomQuote = () => {
+    const randomIndex = Math.floor(Math.random() * loveQuotes.length);
+    setMessage(loveQuotes[randomIndex]);
     setError(null);
   };
 
@@ -90,7 +89,7 @@ export default function ValentineCardGenerator() {
               onClick={generateRandomQuote}
               className="px-4 py-2 bg-[#800020] text-white rounded-lg"
             >
-              💌 Generate Random Love Quote
+              💌 Generate Love Quote
             </button>
 
             {/* Recipient */}
@@ -142,7 +141,7 @@ export default function ValentineCardGenerator() {
                 onClick={handleReset}
                 className="flex-1 border py-3 rounded"
               >
-                Reset
+                Reset Card
               </button>
               <button
                 onClick={() => validateStepOne() && setStep(2)}

@@ -1,6 +1,6 @@
 "use client";
 
-import { Heart, Calculator, Flame, MessageCircle, Sparkles, PenTool } from "lucide-react";
+import { Heart, Calculator, Flame, MessageCircle, Sparkles, PenTool, Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
@@ -47,6 +47,14 @@ export default function Home() {
       icon: PenTool,
       color: "from-red-500 to-pink-500",
       path: "/truth-or-dare",
+    },
+    {
+      id: "drake-equation",
+      title: "Drake Equation",
+      description: "Calculate your potential soulmates using Drake Equation",
+      icon: Search,
+      color: "from-indigo-500 to-purple-500",
+      path: "/drake-equation",
     },
 
   ];

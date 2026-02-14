@@ -36,10 +36,6 @@ export default function ValentineCardGenerator() {
     setErrors({ recipient: "", message: "" });
   };
 
-  const handlePreview = () => {
-    validate();
-  };
-
   return (
     <div className="p-6 max-w-xl mx-auto">
 
@@ -57,7 +53,7 @@ export default function ValentineCardGenerator() {
             value={recipient}
             onChange={(e) => setRecipient(e.target.value)}
             onBlur={validate}
-            placeholder="Enter recipient name"
+            placeholder="Enter your loved one’s name"
             className="w-full border rounded p-2"
           />
 
@@ -82,11 +78,10 @@ export default function ValentineCardGenerator() {
               }
             }}
             onBlur={validate}
-            placeholder="Write your message"
+            placeholder="Write your heartfelt message here..."
             className="w-full border rounded p-2"
           />
 
-          {/* Error */}
           {errors.message && (
             <p className="text-red-500 text-sm mt-1">
               {errors.message}
@@ -101,7 +96,7 @@ export default function ValentineCardGenerator() {
 
       </div>
 
-      {/* Buttons */}
+      {/* Reset Button */}
       <button
         onClick={handleReset}
         className="mt-4 w-full bg-gray-200 hover:bg-gray-300 text-black font-medium py-2 rounded"
@@ -116,6 +111,7 @@ export default function ValentineCardGenerator() {
           message={message}
         />
       )}
+
     </div>
   );
 }

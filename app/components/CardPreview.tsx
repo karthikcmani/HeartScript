@@ -25,12 +25,16 @@ export default function CardPreview({ recipient, message, theme }: Props) {
         <div className="absolute top-16 right-16 w-64 h-64 bg-pink-200 rounded-full blur-3xl opacity-30 animate-pulse" />
         <div
           className="absolute bottom-16 left-16 w-64 h-64 bg-rose-200 rounded-full blur-3xl opacity-30 animate-pulse [animation-delay:2s]"
-          
         />
       </div>
 
       {/* glass container */}
-      <div data-card-preview className="relative z-10 w-full max-w-md bg-white/70 backdrop-blur-xl border border-white/40 p-8 rounded-2xl shadow-xl">
+      <div
+        data-card-preview
+        className="relative z-10 w-full max-w-md bg-white/70 backdrop-blur-xl border border-white/40 p-8 rounded-2xl shadow-xl
+        transition-all duration-500
+        hover:shadow-[0_0_60px_rgba(244,63,94,0.35)]"
+      >
 
         {/* title */}
         <h3 className="text-center text-xs tracking-[0.25em] text-gray-500 font-semibold mb-6">
@@ -38,13 +42,19 @@ export default function CardPreview({ recipient, message, theme }: Props) {
         </h3>
 
         {/* card */}
-        <div data-card-inner className="relative aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
+        <div
+          data-card-inner
+          className="relative aspect-[4/5] rounded-xl overflow-hidden shadow-2xl
+          transition-all duration-500
+          shadow-[0_0_40px_rgba(244,63,94,0.18)]
+          hover:shadow-[0_0_80px_rgba(244,63,94,0.45)]"
+        >
 
           {/* gradient theme */}
           <div className={`absolute inset-0 ${themeStyles[theme]}`} />
 
-         {/* dots overlay */}
-<div className="absolute inset-0 opacity-15 dots-overlay" />
+          {/* dots overlay */}
+          <div className="absolute inset-0 opacity-15 dots-overlay" />
 
           {/* content */}
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-8 py-10">

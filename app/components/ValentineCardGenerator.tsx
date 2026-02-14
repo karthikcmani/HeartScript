@@ -20,6 +20,8 @@ export default function ValentineCardGenerator() {
   const [recipient, setRecipient] = useState("");
   const [message, setMessage] = useState("");
   const [theme, setTheme] = useState("romantic");
+  const [error, setError] = useState<string | null>(null);
+
   const [alignment, setAlignment] = useState<"left" | "center" | "right">("center");
   const [font, setFont] = useState("serif");
 
@@ -49,6 +51,30 @@ const moveSticker = (id:number,x:number,y:number)=>{
 };
 
 /* ---------------- UTIL ---------------- */
+const validateStepOne = () => {
+  if (!recipient.trim()) {
+    setError("Please enter the recipient’s name");
+    return false;
+  }
+
+  if (recipient.trim().length < 2) {
+    setError("Name must be at least 2 characters long");
+    return false;
+  }
+
+  if (!message.trim()) {
+    setError("Message cannot be empty");
+    return false;
+  }
+
+  if (message.trim().length < 2) {
+    setError("Message must be at least 2 characters long");
+    return false;
+  }
+
+  setError(null);
+  return true;
+};
 
 const handleReset = ()=>{
   setRecipient("");
@@ -308,6 +334,12 @@ className="px-4 py-4 border rounded"/>
 rows={5}
 placeholder="Your Message"
 className="px-4 py-4 border-2 rounded-lg resize-none"/>
+{error && (
+  <p className="text-sm text-red-500 mt-1">
+    {error}
+  </p>
+)}
+
 
 {/* AUDIO UI */}
 <div className="flex flex-col gap-3 border rounded-xl p-4">
@@ -363,11 +395,17 @@ className="px-4 py-2 bg-gray-700 text-white rounded disabled:opacity-50">
 
 <div className="flex gap-4">
 <button onClick={handleReset} className="flex-1 border py-3 rounded">Reset</button>
-<button disabled={!recipient||!message}
-onClick={()=>setStep(2)}
-className="flex-1 bg-[#800020] text-white py-3 rounded disabled:opacity-50">
-Continue →
+<button
+  onClick={() => {
+    if (validateStepOne()) {
+      setStep(2);
+    }
+  }}
+  className="flex-1 bg-[#800020] text-white py-3 rounded"
+>
+  Continue →
 </button>
+
 </div>
 
 </div>

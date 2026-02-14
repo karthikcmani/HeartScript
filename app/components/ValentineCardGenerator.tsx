@@ -2,7 +2,18 @@
 
 import { useState, useRef } from "react";
 import CardPreview from "./CardPreview";
-import { Download, FileText, Mail, Heart, ArrowLeft, Send, Copy, Check } from "lucide-react";
+import { Download, FileText, Mail, Heart, ArrowLeft, Send } from "lucide-react";
+//new code 
+const loveQuotes: string[] = [
+  "You are my today and all of my tomorrows ❤️",
+  "Every love story is beautiful, but ours is my favorite 💕",
+  "You make my heart smile 😊",
+  "With you, every moment is magical ✨",
+  "I fall for you more and more every day 💖",
+  "You are the best thing that ever happened to me 💘"
+];
+//
+
 
 export default function ValentineCardGenerator() {
   const [step, setStep] = useState(1);
@@ -24,8 +35,13 @@ export default function ValentineCardGenerator() {
     setFont("serif");
   };
 
-  const handleClearMessage = () => setMessage("");
+  //new code
+ const generateRandomQuote = () => {
+    const randomIndex = Math.floor(Math.random() * loveQuotes.length);
+    setMessage(loveQuotes[randomIndex]);
+  };
 
+//
   const createDownloadCard = () => {
     const themeGradients: Record<string,string> = {
       romantic:"linear-gradient(135deg,#ec4899,#f43f5e,#800020)",
@@ -210,14 +226,39 @@ export default function ValentineCardGenerator() {
           {/* Left Column - Form */}
           <div className="flex flex-col gap-6">
 
-            <div>
-              <h1 className="text-4xl font-bold text-gray-900 mb-2">
-                Create Your Valentine Card
-              </h1>
-              <p className="text-gray-600">
-                Craft a heartfelt message for your special someone.
-              </p>
-            </div>
+            <input
+              value={recipient}
+              onChange={e=>setRecipient(e.target.value)}
+              placeholder="Recipient Name"
+              className="px-4 py-4 border-2 rounded-lg"
+            />
+
+            <textarea
+              value={message}
+              onChange={e=>setMessage(e.target.value)}
+              placeholder="Personal Message"
+              rows={5}
+              className="px-4 py-4 border-2 rounded-lg resize-none"
+            />
+
+            {/* new code */}
+            <button
+  type="button"
+  onClick={() => {
+    const randomIndex = Math.floor(Math.random() * loveQuotes.length);
+    setMessage(loveQuotes[randomIndex]);
+  }}
+  className="px-4 py-2 bg-[#800020] text-white rounded-lg hover:bg-[#630019] transition text-sm font-semibold"
+>
+  💌 Generate Random Love Quote
+</button>
+            
+
+            <select value={theme} onChange={e=>setTheme(e.target.value)} className="px-4 py-3 border-2 rounded-lg">
+              <option value="romantic">Romantic</option>
+              <option value="dark">Dark Love</option>
+              <option value="pastel">Pastel Dream</option>
+            </select>
 
             {/* Recipient */}
             <div>

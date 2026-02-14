@@ -36,12 +36,6 @@ const [audioURL, setAudioURL] = useState<string | null>(null);
 const [isRecording, setIsRecording] = useState(false);
 const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
 
-  /* AUDIO */
-  const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
-  const [audioURL, setAudioURL] = useState<string | null>(null);
-  const [isRecording, setIsRecording] = useState(false);
-  const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
-
   const stickerOptions = ["❤️","🌹","⭐","💖","💘","✨","🎀","💐"];
 
 /* ---------------- STICKERS ---------------- */

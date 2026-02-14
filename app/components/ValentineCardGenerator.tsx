@@ -24,6 +24,7 @@ export default function ValentineCardGenerator() {
 
   const [alignment, setAlignment] = useState<"left" | "center" | "right">("center");
   const [font, setFont] = useState("serif");
+const MESSAGE_LIMIT = 200;
 
   const [stickers, setStickers] = useState<{ id:number;x:number;y:number;emoji:string }[]>([]);
   const [showEmoji, setShowEmoji] = useState(false);
@@ -334,6 +335,14 @@ className="px-4 py-4 border rounded"/>
 rows={5}
 placeholder="Your Message"
 className="px-4 py-4 border-2 rounded-lg resize-none"/>
+<p
+  className={`text-sm mt-1 ${
+    message.length > MESSAGE_LIMIT ? "text-red-500" : "text-gray-500"
+  }`}
+>
+  {message.length} / {MESSAGE_LIMIT} characters
+</p>
+
 {error && (
   <p className="text-sm text-red-500 mt-1">
     {error}
